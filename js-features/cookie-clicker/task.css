@@ -1,0 +1,17 @@
+.cookie {
+    width: 200px;
+    height: 200px;
+    background-image: url("cookie.png"); 
+    background-size: cover;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  #clickSpeed {
+    margin-top: 20px;
+  }
+  

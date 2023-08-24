@@ -3,7 +3,7 @@ let lastClickTime = new Date().getTime();
 let clickSpeed = 0;
 
 const cookie = document.getElementById("cookie");
-const counter = document.getElementById("counter");
+const counter = document.getElementById("clicker__counter");
 const clickSpeedDisplay = document.getElementById("clickSpeed");
 
 cookie.onclick = () => {
@@ -15,14 +15,11 @@ cookie.onclick = () => {
   lastClickTime = currentTime;
   
   counter.textContent = clickCounter;
-  clickSpeedDisplay.textContent = "Скорость клика: ${clickSpeed.toFixed(2)} кликов в секунду";
+  clickSpeedDisplay.textContent = `Скорость клика: ${clickSpeed.toFixed(2)} кликов в секунду`;
 
-  // Alternate between increasing and decreasing cookie size
-  if (cookie.style.width === "200px") {
-    cookie.style.width = "220px";
-    cookie.style.height = "220px";
+  if (cookie.width === 200) {
+    cookie.width = 220;
   } else {
-    cookie.style.width = "200px";
-    cookie.style.height = "200px";
+    cookie.width = 200;
   }
 };

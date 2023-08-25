@@ -26,11 +26,11 @@ function holeClick(index) {
 }
 
 function updateStats() {
-    const scoreDisplay = document.getElementById("score");
-    const missesDisplay = document.getElementById("misses");
+    const scoreDisplay = document.getElementById("dead");
+    const missesDisplay = document.getElementById("lost");
     
-    scoreDisplay.textContent = `Попаданий: ${score}`;
-    missesDisplay.textContent = `Промахов: ${misses}`;
+    scoreDisplay.textContent = score;
+    missesDisplay.textContent = misses;
 }
 
 function resetStats() {

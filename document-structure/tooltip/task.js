@@ -1,30 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const tooltipTriggers = document.querySelectorAll(".has-tooltip");
-  
-    tooltipTriggers.forEach((trigger) => {
-      trigger.addEventListener("click", function (event) {
-        event.preventDefault();
-        const tooltipText = this.getAttribute("title");
-        const tooltip = document.createElement("div");
-        tooltip.classList.add("tooltip");
-        tooltip.innerText = tooltipText;
-  
-        const existingTooltip = document.querySelector(".tooltip_active");
-        if (existingTooltip) {
-          existingTooltip.classList.remove("tooltip_active");
-        }
-  
-        tooltip.style.left = event.clientX + "px";
-        tooltip.style.top = event.clientY + "px";
-        tooltip.classList.add("tooltip_active");
-        document.body.appendChild(tooltip);
-  
-        document.addEventListener("click", function (e) {
-          if (e.target !== trigger && e.target !== tooltip) {
-            tooltip.remove();
-          }
-        });
-      });
+const tooltipTriggers = document.querySelectorAll('.has-tooltip');
+
+tooltipTriggers.forEach(trigger => {
+  trigger.addEventListener('click', function (event) {
+    event.preventDefault(); 
+
+    document.querySelectorAll('.tooltip_active').forEach(tooltip => {
+      tooltip.classList.remove('tooltip_active');
     });
+
+    const tooltip = this.nextElementSibling;
+
+    if (tooltip) {
+      tooltip.classList.add('tooltip_active');
+
+      const triggerRect = this.getBoundingClientRect();
+      tooltip.style.left = triggerRect.left + 'px';
+      tooltip.style.top = triggerRect.bottom + 'px';
+    }
+  });
+});
+
+document.addEventListener('click', function (event) {
+  if (!event.target.classList.contains('has-tooltip')) {
+    document.querySelectorAll('.tooltip_active').forEach(tooltip => {
+      tooltip.classList.remove('tooltip_active');
+    });
+  }
+});
+
   });
   
